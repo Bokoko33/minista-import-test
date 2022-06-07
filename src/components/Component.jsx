@@ -1,11 +1,27 @@
-// ビルド失敗例
-// import { CONST_A } from "~/lib/constants"
+import { useState } from "react"
 
-// ビルド成功例
-import { CONST_A } from "../lib/constants"
-
+// 成功例（default exportを使用）
 const Component = () => {
-  return <p>{CONST_A}</p>
+  const [count, setCount] = useState(0)
+
+  return (
+    <>
+      <p>{count}</p>
+      <button onClick={() => setCount((prev) => prev + 1)}>count up</button>
+    </>
+  )
 }
 
 export default Component
+
+// 失敗例（named exportを使用）
+// export const Component = () => {
+//   const [count, setCount] = useState(0)
+
+//   return (
+//     <>
+//       <p>{count}</p>
+//       <button onClick={() => setCount((prev) => prev + 1)}>count up</button>
+//     </>
+//   )
+// }
